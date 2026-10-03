@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F6F6F4">
-<title>Kyushu Solo Trip 2027 — Bento Preview</title>
+<title>Kyushu Solo Trip 2027 — overview</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -56,10 +56,10 @@ tailwind.config = {
       </div>
 
       <nav class="hidden items-center gap-2 md:flex">
-        <button class="nav-btn rounded-full bg-ink px-4 py-2 text-xs font-bold text-white" data-tab="overview">Overview</button>
-        <button class="nav-btn rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" data-tab="itinerary">Itinerary</button>
-        <button class="nav-btn rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" data-tab="food">Food</button>
-        <button class="nav-btn rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" data-tab="booking">Flights + Stay</button>
+        <a class="rounded-full px-4 py-2 text-xs font-bold bg-ink text-white" href="index.html">Overview</a>
+        <a class="rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" href="itinerary.html">Itinerary</a>
+        <a class="rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" href="food.html">Food</a>
+        <a class="rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" href="booking.html">Flights + Stay</a>
       </nav>
 
       <button class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold">
@@ -116,9 +116,9 @@ tailwind.config = {
               <div class="text-[10px] font-bold uppercase tracking-[.18em] text-muted">Next highlight</div>
               <div class="mt-1 text-sm font-black">由布院之森 · Jan 24 · 09:17</div>
             </div>
-            <button data-tab="itinerary" class="nav-btn flex items-center gap-3 rounded-full bg-lime px-5 py-3 text-sm font-black text-ink">
+            <a href="itinerary.html" class="nav-btn flex items-center gap-3 rounded-full bg-lime px-5 py-3 text-sm font-black text-ink">
               Explore itinerary <span class="grid h-7 w-7 place-items-center rounded-full bg-ink text-white">↗</span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -219,7 +219,7 @@ tailwind.config = {
                 <span class="rounded-full bg-lime px-3 py-1 text-[10px] font-black">MUST EAT</span>
                 <h3 class="mt-7 text-3xl font-black tracking-[-.04em]">Good food is part of the itinerary.</h3>
                 <p class="mt-4 text-sm leading-6 text-muted">Motsunabe, mizutaki, ramen, yakitori, Yufuin sweets and a few cafés worth slowing down for.</p>
-                <button data-tab="food" class="nav-btn mt-7 rounded-full border border-black/10 px-4 py-2 text-xs font-black">Open food list ↗</button>
+                <a href="food.html" class="nav-btn mt-7 rounded-full border border-black/10 px-4 py-2 text-xs font-black">Open food list ↗</a>
               </div>
             </div>
           </article>
@@ -423,10 +423,10 @@ tailwind.config = {
 
   <!-- Mobile Bottom Nav -->
   <nav class="fixed bottom-3 left-3 right-3 z-50 grid grid-cols-4 rounded-[22px] border border-black/10 bg-white/90 p-2 backdrop-blur-xl md:hidden">
-    <button class="mobile-tab rounded-2xl bg-ink py-3 text-[11px] font-black text-white" data-tab="overview">Home</button>
-    <button class="mobile-tab rounded-2xl py-3 text-[11px] font-black text-muted" data-tab="itinerary">Trip</button>
-    <button class="mobile-tab rounded-2xl py-3 text-[11px] font-black text-muted" data-tab="food">Food</button>
-    <button class="mobile-tab rounded-2xl py-3 text-[11px] font-black text-muted" data-tab="booking">Flights + Stay</button>
+    <a class="rounded-2xl py-3 text-center text-[11px] font-black bg-ink text-white" href="index.html">Home</a>
+    <a class="rounded-2xl py-3 text-center text-[11px] font-black text-muted" href="itinerary.html">Trip</a>
+    <a class="rounded-2xl py-3 text-center text-[11px] font-black text-muted" href="food.html">Food</a>
+    <a class="rounded-2xl py-3 text-center text-[11px] font-black text-muted" href="booking.html">Flights + Stay</a>
   </nav>
 </div>
 
@@ -563,7 +563,7 @@ foodGroups.forEach((g,idx)=>{
   const card=document.createElement('article');
   card.className='overflow-hidden rounded-[28px] border border-line bg-white';
   card.innerHTML=`
-    <div class="h-40 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-${['1504674900247-0877df9cc836','1553621042-f6e147245754','1555396273-367ea4eb4db5','1569050467447-ce54b3bbc37d'][idx]}?auto=format&fit=crop&w=1000&q=80')"></div>
+    <div class="h-40 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-${['1504674900247-0877df9cc836','1553621042-f6e147245754','1555396273-367ea4eb4db5','1569050467447-ce54b3bbc37d'][idx%4]}?auto=format&fit=crop&w=1000&q=80')"></div>
     <div class="p-5">
       <div class="mb-4 flex items-center justify-between">
         <h3 class="text-xl font-black">${g[0]}</h3>
@@ -597,25 +597,6 @@ document.getElementById('memoList').innerHTML=memos.map((x,i)=>`
     <input class="persist mt-0.5 h-4 w-4 accent-black" id="m${i}" type="checkbox">
     <label class="text-xs leading-5" for="m${i}">${x}</label>
   </div>`).join('');
-
-function activate(tab){
-  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('hidden',v.id!==tab));
-  document.querySelectorAll('.nav-btn').forEach(b=>{
-    const active=b.dataset.tab===tab;
-    if(b.closest('nav')){
-      b.classList.toggle('bg-ink',active);b.classList.toggle('text-white',active);b.classList.toggle('text-muted',!active);
-    }
-  });
-  document.querySelectorAll('.mobile-tab').forEach(b=>{
-    const active=b.dataset.tab===tab;
-    b.classList.toggle('bg-ink',active);b.classList.toggle('text-white',active);b.classList.toggle('text-muted',!active);
-  });
-  localStorage.setItem('kyushu_bento_tab',tab);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>activate(b.dataset.tab)));
-const savedTab=localStorage.getItem('kyushu_bento_tab');
-if(savedTab) activate(savedTab);
 
 
 // Live trip countdown — target is the start of Jan 22, 2027 in Japan (JST)
