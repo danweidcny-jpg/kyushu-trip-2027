@@ -592,7 +592,7 @@ const memos=[
 '黒田飯｜30 Jan · 17:00 开门尽量早到',
 '30 Jan 晚上确认机场动线与行李'
 ];
-document.getElementById('memoList')/.innerHTML=memos.map((x,i)=>`
+document.getElementById('memoList').innerHTML=memos.map((x,i)=>`
   <div class="task flex gap-3 rounded-2xl bg-[#F8F8F6] p-3">
     <input class="persist mt-0.5 h-4 w-4 accent-black" id="m${i}" type="checkbox">
     <label class="text-xs leading-5" for="m${i}">${x}</label>
