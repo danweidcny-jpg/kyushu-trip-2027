@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F6F6F4">
-<title>Kyushu Solo Trip 2027 — booking</title>
+<title>Kyushu Solo Trip 2027 — reservations</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -56,7 +56,7 @@ tailwind.config = {
         </div>
       </div>
 
-      <nav class="trip-nav desktop" aria-label="Desktop navigation"><a href="index.html">Overview</a><a href="itinerary.html">Itinerary</a><a href="food.html">Food</a><a href="reservations.html">Bookings</a><a href="booking.html" aria-current="page">More</a></nav>
+      <nav class="trip-nav desktop" aria-label="Desktop navigation"><a href="index.html">Overview</a><a href="itinerary.html">Itinerary</a><a href="food.html">Food</a><a href="reservations.html" aria-current="page">Bookings</a><a href="booking.html">More</a></nav>
 
       <button class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold">
         2027.01.22 — 01.31
@@ -274,7 +274,7 @@ tailwind.config = {
     </section>
 
     <!-- BOOKING -->
-    <section id="booking" class="view py-14">
+    <section id="booking" class="view hidden py-14">
       <div class="mb-10">
         <span class="rounded-full bg-lime px-3 py-1 text-[10px] font-black">FLIGHTS + STAY + TO‑DO</span>
         <h2 class="mt-4 text-4xl font-black tracking-[-.05em] md:text-6xl">Flights + Stay,<br><span class="serif-italic">and the little details.</span></h2>
@@ -414,10 +414,11 @@ tailwind.config = {
         </div>
       </article>
     </section>
+<section id="reservations" class="planner"><div class="planner-heading"><span class="eyebrow">BEFORE YOU GO</span><h1>Reservations<span>留好位，慢慢玩。</span></h1><p>想订、已申请和已确认，分开记录。日期均标明时区。</p></div><div id="reservationApp"></div></section>
   </main>
 
   <!-- Mobile Bottom Nav -->
-  <nav class="trip-nav mobile" aria-label="Mobile navigation"><a href="index.html">Home</a><a href="itinerary.html">Trip</a><a href="food.html">Food</a><a href="reservations.html">Bookings</a><a href="booking.html" aria-current="page">More</a></nav>
+  <nav class="trip-nav mobile" aria-label="Mobile navigation"><a href="index.html">Home</a><a href="itinerary.html">Trip</a><a href="food.html">Food</a><a href="reservations.html" aria-current="page">Bookings</a><a href="booking.html">More</a></nav>
 </div>
 
 <script>

@@ -39,6 +39,7 @@ tailwind.config = {
   .soft-scroll::-webkit-scrollbar{display:none}.soft-scroll{-ms-overflow-style:none;scrollbar-width:none}
   .task.done label{text-decoration:line-through;opacity:.45}
 </style>
+<link rel="stylesheet" href="planner.css?v=20261003">
 </head>
 
 <body class="bg-cream text-ink font-sans">
@@ -55,12 +56,7 @@ tailwind.config = {
         </div>
       </div>
 
-      <nav class="hidden items-center gap-2 md:flex">
-        <a class="rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" href="index.html">Overview</a>
-        <a class="rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" href="itinerary.html">Itinerary</a>
-        <a class="rounded-full px-4 py-2 text-xs font-bold bg-ink text-white" href="food.html">Food</a>
-        <a class="rounded-full px-4 py-2 text-xs font-bold text-muted hover:bg-white" href="booking.html">Flights + Stay</a>
-      </nav>
+      <nav class="trip-nav desktop" aria-label="Desktop navigation"><a href="index.html">Overview</a><a href="itinerary.html">Itinerary</a><a href="food.html" aria-current="page">Food</a><a href="reservations.html">Bookings</a><a href="booking.html">More</a></nav>
 
       <button class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold">
         2027.01.22 — 01.31
@@ -114,7 +110,7 @@ tailwind.config = {
           <div class="flex flex-wrap items-end justify-between gap-4">
             <div class="glass rounded-[24px] p-4 text-ink">
               <div class="text-[10px] font-bold uppercase tracking-[.18em] text-muted">Next highlight</div>
-              <div class="mt-1 text-sm font-black">由布院之森 · Jan 24 · 09:17</div>
+              <div class="mt-1 text-sm font-black">由布院之森 · Jan 24 · 09:17 待确认</div>
             </div>
             <a href="itinerary.html" class="nav-btn flex items-center gap-3 rounded-full bg-lime px-5 py-3 text-sm font-black text-ink">
               Explore itinerary <span class="grid h-7 w-7 place-items-center rounded-full bg-ink text-white">↗</span>
@@ -213,8 +209,7 @@ tailwind.config = {
           </article>
 
           <article class="card-hover overflow-hidden rounded-[28px] border border-line bg-white md:col-span-2">
-            <div class="grid md:grid-cols-2">
-              <img class="h-72 w-full object-cover" src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?auto=format&fit=crop&w=1200&q=85" alt="Japanese food">
+            <div>
               <div class="p-6">
                 <span class="rounded-full bg-lime px-3 py-1 text-[10px] font-black">MUST EAT</span>
                 <h3 class="mt-7 text-3xl font-black tracking-[-.04em]">Good food is part of the itinerary.</h3>
@@ -264,13 +259,13 @@ tailwind.config = {
       <div class="mb-10">
         <span class="rounded-full bg-lime px-3 py-1 text-[10px] font-black">EAT WELL</span>
         <h2 class="mt-4 text-4xl font-black tracking-[-.05em] md:text-6xl">Places worth <span class="serif-italic">saving room for.</span></h2>
-        <p class="mt-4 max-w-2xl text-sm leading-6 text-muted">按地区整理。打勾后会保留；评分为整理时参考值；Google Maps 直接打开最新营业时间和评分。</p>
+        <p class="mt-4 max-w-2xl text-sm leading-6 text-muted">按区域、优先级和餐别筛选。收藏笔记与完成状态保留在此浏览器；Maps 查看最新营业时间。</p>
       </div>
       <div class="mb-6 rounded-[26px] border border-line bg-white p-5">
       <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div>
           <div class="text-xs font-black uppercase tracking-[.18em] text-muted">Food planning notes</div>
-          <div class="mt-2 text-sm leading-6 text-muted">已按独立创作者重复推荐、本人想吃、Solo 友好度和路线整合。🔥×3 以上为高共识；同一创作者重复提及只算 1 次。</div>
+          <div class="mt-2 text-sm leading-6 text-muted">保留原有独立来源计数：同一创作者只算一次。推荐次数、个人优先级和一人食条件分别判断；原始来源链接待补齐。</div>
         </div>
         <span class="mt-2 w-fit rounded-full bg-lime px-3 py-2 text-[10px] font-black md:mt-0">FULL FOOD LIST</span>
       </div>
@@ -282,7 +277,7 @@ tailwind.config = {
     <section id="booking" class="view hidden py-14">
       <div class="mb-10">
         <span class="rounded-full bg-lime px-3 py-1 text-[10px] font-black">FLIGHTS + STAY + TO‑DO</span>
-        <h2 class="mt-4 text-4xl font-black tracking-[-.05em] md:text-6xl">Everything booked,<br><span class="serif-italic">all in one place.</span></h2>
+        <h2 class="mt-4 text-4xl font-black tracking-[-.05em] md:text-6xl">Flights + Stay,<br><span class="serif-italic">and the little details.</span></h2>
       </div>
 
       <article class="mb-6 rounded-[28px] border border-line bg-white p-6">
@@ -422,19 +417,15 @@ tailwind.config = {
   </main>
 
   <!-- Mobile Bottom Nav -->
-  <nav class="fixed bottom-3 left-3 right-3 z-50 grid grid-cols-4 rounded-[22px] border border-black/10 bg-white/90 p-2 backdrop-blur-xl md:hidden">
-    <a class="rounded-2xl py-3 text-center text-[11px] font-black text-muted" href="index.html">Home</a>
-    <a class="rounded-2xl py-3 text-center text-[11px] font-black text-muted" href="itinerary.html">Trip</a>
-    <a class="rounded-2xl py-3 text-center text-[11px] font-black bg-ink text-white" href="food.html">Food</a>
-    <a class="rounded-2xl py-3 text-center text-[11px] font-black text-muted" href="booking.html">Flights + Stay</a>
-  </nav>
+  <nav class="trip-nav mobile" aria-label="Mobile navigation"><a href="index.html">Home</a><a href="itinerary.html">Trip</a><a href="food.html" aria-current="page">Food</a><a href="reservations.html">Bookings</a><a href="booking.html">More</a></nav>
 </div>
 
 <script>
+const tripStorage={getItem(k){try{return localStorage.getItem(k)}catch{return null}},setItem(k,v){try{localStorage.setItem(k,v)}catch{document.documentElement.dataset.storageUnavailable='true'}}};
 const days=[
 [1,'22 JAN · FRI','抵达福岡：入住 + 轻松第一餐','福岡机场 → 渡辺通 / 天神南',['20:00 抵达福岡机场（FUK）','20:45–21:15 前往酒店并办理入住','21:30–22:30 第一餐：一蘭 JR博多シティ / Shin-Shin 二选一（看排队）','回酒店洗澡、整理隔天随身物，不安排夜游'],'一蘭 / Shin-Shin','Fukuoka Toei Hotel'],
 [2,'23 JAN · SAT','药院生活感 + 大濠公园 + 大名美食','薬院 → 大濠公园 → 大名',['09:00 药院 / 渡辺通附近慢早餐；Ichimujin 作为本人必吃候选优先确认营业','10:00–11:30 药院・今泉慢逛','11:45–13:00 Niku no Yamasho 肉の山翔：午餐限定明太子和牛定食候选','14:00–15:30 大濠公园散步','16:00–18:00 大名：Little Stand Daimyo / 选品 / 街拍','19:00 烧肉只选一间：大東園 / NIKUICHI / 焼肉 上（不重复吃）'],'Niku no Yamasho / Little Stand Daimyo / 烧肉择一','Fukuoka Toei Hotel'],
-[3,'24 JAN · SUN','由布院之森 + 艺术馆 + 温泉小镇','福岡 → 由布院',['07:45–08:15 退房并前往博多站','09:17 搭由布院之森','11:31 左右抵达由布院，先寄行李','12:00 由布院釜饭「心」：若排队太久就改吃沿路小吃','13:15–14:30 汤之坪街道','15:00 COMICO Art Museum','16:30 Enokiya Ryokan 入住、泡汤休息'],'由布院釜饭「心」 / B-Speak / Milch','Enokiya Ryokan'],
+[3,'24 JAN · SUN','由布院之森 + 艺术馆 + 温泉小镇','福岡 → 由布院',['07:45–08:15 退房并前往博多站','09:17 搭由布院之森（参考班次，2027运行日待确认）','11:31 左右抵达由布院，先寄行李','12:00 由布院釜饭「心」：若排队太久就改吃沿路小吃','13:15–14:30 汤之坪街道','15:00 COMICO Art Museum','16:30 Enokiya Ryokan 入住、泡汤休息'],'由布院釜饭「心」 / B-Speak / Milch','Enokiya Ryokan'],
 [4,'25 JAN · MON','My 34th Birthday · 晨雾写真 + 湖畔咖啡','由布院 · Birthday Slow Day',['07:30 起床，看天气决定是否早出门','08:00 金鳞湖晨雾 + 生日照片','09:30 慢慢走回、休息、整理照片','11:00 Cafe La Ruche 湖畔咖啡 / brunch','12:30–14:30 只挑一个喜欢的街区或店慢逛','15:00 回旅馆：温泉、浴衣、写日记','18:30 Enokiya 生日晚餐'],'Cafe La Ruche / Enokiya 会席料理','Enokiya Ryokan'],
 [5,'26 JAN · TUE','由布院最后半天 + 回福岡','由布院 → 博多',['08:30–09:30 早餐 / 整理行李','10:00 退房，行李寄放','10:15–12:30 补完前两天没逛到的店','14:30 左右返回福岡','17:00 入住 BASE LAYER HOTEL','19:00 水炊锅：橙 优先；華味鳥作为备选，吃一间即可'],'水炊鍋 橙 / 華味鳥','BASE LAYER HOTEL FUKUOKA'],
 [6,'27 JAN · WED','门司港：建筑、海风、烧咖喱','博多 → 门司港 → 福岡市区',['09:00 左右从博多出发','10:30 门司港站 + Retro 建筑群','12:30 烧咖喱午餐','13:45 旧大阪商船 / 旧门司税关','15:00 咖啡休息','16:30–17:00 回福岡','19:00 博多牛まぶし 武蔵（🔥×3）或当天烧肉候选择一，优先 Solo Friendly'],'博多牛まぶし 武蔵 / 烧肉择一','BASE LAYER HOTEL FUKUOKA'],
@@ -563,7 +554,6 @@ foodGroups.forEach((g,idx)=>{
   const card=document.createElement('article');
   card.className='overflow-hidden rounded-[28px] border border-line bg-white';
   card.innerHTML=`
-    <div class="h-40 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-${['1504674900247-0877df9cc836','1553621042-f6e147245754','1555396273-367ea4eb4db5','1569050467447-ce54b3bbc37d'][idx%4]}?auto=format&fit=crop&w=1000&q=80')"></div>
     <div class="p-5">
       <div class="mb-4 flex items-center justify-between">
         <h3 class="text-xl font-black">${g[0]}</h3>
@@ -582,7 +572,7 @@ foodGroups.forEach((g,idx)=>{
 });
 
 const memos=[
-'由布院之森车票｜24 Jan · 09:17',
+'由布院之森车票｜24 Jan · 09:17 参考班次',
 '炉端ノいとおかし｜29 Jan 早餐 · 提前确认预约',
 'Sukiyaki Yamasho｜午餐候选 · 提前预约',
 'Kawazu Sushi｜本人必吃 · 确认是否可预约 1 pax',
@@ -669,15 +659,16 @@ setInterval(updateClocks, 1000);
 
 document.querySelectorAll('.persist').forEach(cb=>{
   const key='kyushu_check_'+cb.id;
-  const saved=localStorage.getItem(key);
+  const saved=tripStorage.getItem(key);
   if(saved!==null) cb.checked=saved==='1';
   const parent=cb.closest('.task');
   if(parent) parent.classList.toggle('done',cb.checked);
   cb.addEventListener('change',()=>{
-    localStorage.setItem(key,cb.checked?'1':'0');
+    tripStorage.setItem(key,cb.checked?'1':'0');
     if(parent) parent.classList.toggle('done',cb.checked);
   });
 });
 </script>
+<script src="planner.js?v=20261003"></script>
 </body>
 </html>
